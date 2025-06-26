@@ -1,0 +1,7 @@
+    auto tensor =torch::rand({num_cp, 3});
+    auto bytes = torch::pickle_save(tensor); //this is actually a std::vector of char
+    std::ofstream fout("ten.zip", std::ios::out | std::ios::binary);
+    fout.write(bytes.data(), bytes.size());
+    fout.close();
+
+直接调用torch::save()读出来不行。。。
